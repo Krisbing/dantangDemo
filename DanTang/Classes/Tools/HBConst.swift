@@ -15,6 +15,8 @@ let PNavBarHeight:CGFloat = 64
 
 let Base_url = "http://api.dantangapp.com/"
 
+/// code 码 200 操作成功
+let RETURN_OK = 200
 
 //屏幕宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
