@@ -31,3 +31,7 @@ func HBRGBA(r: CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
 func HBGlobalRedColor() -> UIColor {
     return HBRGBA(r: 245, g: 80, b: 83, a: 1.0)
 }
+//背景灰色
+func HBGlobalColor() -> UIColor {
+    return HBRGBA(r: 240, g: 240, b: 240, a: 1)
+}

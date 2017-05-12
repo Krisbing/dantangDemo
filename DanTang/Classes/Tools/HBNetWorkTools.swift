@@ -36,6 +36,7 @@ class HBNetWorkTools: NSObject {
                 let message = dict["message"].stringValue
                 guard code == RETURN_OK else {
                     print(message)
+                    
                     return;
                 }
                 
