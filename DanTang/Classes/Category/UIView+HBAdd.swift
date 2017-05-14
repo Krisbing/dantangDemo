@@ -23,18 +23,42 @@ extension UIView {
         layer.mask = maskLayer
     }
     
-    func addRefreshActivityView() {
+    //定义私有结构体,目的是为了防止命名污染整个命名空间
+    private struct AssociatedKeys{
+        static let refresh_key = "refresh_key"
+    }
+    //当前下载操作的URL
+    //使用关联度细给分类加属性
+    var activityView : UIActivityIndicatorView? {
+        get
+        {
+            return objc_getAssociatedObject(self, AssociatedKeys.refresh_key) as? UIActivityIndicatorView
+        }
         
-        if objc_getAssociatedObject(self, refresh_key) != nil {return}
-        let activity = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
-        activity.center = self.center
-        activity.startAnimating()
-        objc_setAssociatedObject(self, refresh_key, activity, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        set(newValue)
+        {
+            if let newValue = newValue
+            {
+                objc_setAssociatedObject(
+                    self,
+                    AssociatedKeys.refresh_key,
+                    newValue as UIActivityIndicatorView?,
+                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+
+    
+    func addRefreshActivityView() {
+
+        activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+        activityView?.center = self.center
+        self.addSubview(activityView!)
+        activityView?.startAnimating()
     }
     
     func removeRefreshActivityView() {
         
-        let activityView = objc_getAssociatedObject(self, refresh_key) as? UIActivityIndicatorView
         activityView?.stopAnimating()
         activityView?.removeFromSuperview()
     }
