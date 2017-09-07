@@ -16,6 +16,14 @@ class HBDanTangViewController: HBBaseViewController {
     
     var buttonArray = [UIButton]()
     
+    var testLab: UILabel = {
+       
+        let testLab = UILabel()
+        
+        return testLab
+    }()
+    
+    
     func requestTopTitleData() {
         weak var weakSelf = self
         HBNetWorkTools.networktools.loadTopTitleInfo { (chanels:[HBChanelModel]) in

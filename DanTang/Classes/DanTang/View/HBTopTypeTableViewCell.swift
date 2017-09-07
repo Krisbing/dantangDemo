@@ -44,7 +44,7 @@ class HBTopTypeTableViewCell: UITableViewCell {
         
         self.setupUI()
     }
-    
+    //mark - setupUI
     func setupUI() {
         
         self.favoriteBtn.backgroundColor = UIColor.gray
@@ -55,7 +55,7 @@ class HBTopTypeTableViewCell: UITableViewCell {
         self.bgImageView.clipsToBounds = true
         
     }
-    
+
     @IBAction func favoriteAction(_ sender: UIButton) {
         
         delegate?.callback()
